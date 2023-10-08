@@ -1,8 +1,12 @@
 package view;
 
+import interface_adapter.clear_users.ClearController;
+import interface_adapter.clear_users.ClearState;
+import interface_adapter.clear_users.ClearViewModel;
 import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupState;
 import interface_adapter.signup.SignupViewModel;
+import use_case.clear_users.ClearInteractor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,6 +83,12 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+
+                        if (e.getSource().equals(clear)) {
+
+                            ClearController clearController = new ClearController(new ClearInteractor());
+                            clearController.execute();
+                        }
 
                     }
                 }
